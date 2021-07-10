@@ -134,7 +134,7 @@ lastName: {
 
 ### Project kanban
 
-- [Github projects]()
+- https://github.com/lucioxx89/Project-Module-3/projects
 
 ### Wireframes
 
