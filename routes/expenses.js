@@ -4,11 +4,24 @@ const Expenses = require('../models/Expenses');
 
 const router = express.Router();
 
-// Find - show expenses
+// Find  all expenses
 router.get('/', (req, res, next) => {
 	Expenses.find({})
+		.then(findExpenses => {
+			res.json({ found: findExpenses });
+		})
+		.catch(error => {
+			next(error);
+		});
+});
+
+// Find an expense by id
+router.get('/:id', (req, res, next) => {
+	const { id } = req.params;
+
+	Expenses.findById(id)
 		.then(findExpense => {
-			res.json({ findExpense });
+			res.json({ found: findExpense });
 		})
 		.catch(error => {
 			next(error);
