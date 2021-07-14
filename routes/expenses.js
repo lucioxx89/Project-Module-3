@@ -34,7 +34,7 @@ router.post('/', (req, res, next) => {
 
 	Expenses.create({ name, cost, description, categories })
 		.then(newExpense => {
-			res.json({ createdExpense: newExpense });
+			res.json({ created: newExpense });
 		})
 		.catch(error => {
 			next(error);
@@ -47,22 +47,8 @@ router.put('/:id', (req, res, next) => {
 	const { id } = req.params;
 
 	Expenses.findByIdAndUpdate(id, { name, cost, description, categories }, { new: true })
-		.then(editExpense => {
-			res.json({ editeddExpense: editExpense });
-		})
-		.catch(error => {
-			next(error);
-		});
-});
-
-// edit an expense
-router.put('/:id', (req, res, next) => {
-	const { name, cost, description, categories } = req.body;
-	const { id } = req.params;
-
-	Expenses.findByIdAndUpdate(id, { name, cost, description, categories }, { new: true })
-		.then(editExpense => {
-			res.json({ update: editExpense });
+		.then(updateExpense => {
+			res.json({ updated: updateExpense });
 		})
 		.catch(error => {
 			next(error);
