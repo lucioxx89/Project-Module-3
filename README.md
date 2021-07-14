@@ -99,17 +99,9 @@ User model
 
 ```js
 {
-firstName: {
-    type:String,
-    required: true,
-    }
 
-lastName: {
-    type:String,
-    required: true,
-    }
 
-    email: {
+    username: {
         type: String,
         unique: true,
     }
