@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const expenseSchema = new Schema({
 	name: {
 		type: String,
 		required: true,
@@ -19,10 +19,16 @@ const userSchema = new Schema({
 	},
 
 	categories: {
+		type: String,
 		enum: ['Home', 'Grocery', 'Health', 'Travel', 'Other'],
+	},
+
+	userId: {
+		type: Schema.Types.ObjectId,
+		ref: 'User',
 	},
 });
 
-const Expenses = mongoose.model('Expenses', userSchema);
+const Expenses = mongoose.model('Expenses', expenseSchema);
 
 module.exports = Expenses;
