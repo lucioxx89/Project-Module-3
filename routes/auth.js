@@ -23,16 +23,11 @@ router.post('/signup', checkUsernameAndPasswordNotEmpty, async (req, res, next) 
 	try {
 		const user = await User.findOne({ username });
 		if (user) {
-			console.log("user", user)
 			return next(createError(422));
 		}
 
 		const salt = bcrypt.genSaltSync(bcryptSalt);
 		const hashedPassword = bcrypt.hashSync(password, salt);
-		console.log("username", username)
-		console.log("password", password)
-		console.log("hashedPassword", hashedPassword)
-
 
 		const newUser = await User.create({ username, hashedPassword });
 		req.session.currentUser = newUser;
