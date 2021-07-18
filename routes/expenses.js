@@ -6,7 +6,9 @@ const router = express.Router();
 
 // Find  all expenses
 router.get('/', (req, res, next) => {
-	Expenses.find({})
+	const { currentUser } = req.session;
+
+	Expenses.find({ userId: currentUser._id })
 		.then(findExpenses => {
 			res.json({ found: findExpenses });
 		})
@@ -18,10 +20,15 @@ router.get('/', (req, res, next) => {
 // Find an expense by id
 router.get('/:id', (req, res, next) => {
 	const { id } = req.params;
+	const { currentUser } = req.session;
 
 	Expenses.findById(id)
 		.then(findExpense => {
-			res.json({ found: findExpense });
+			if (findExpense.userId !== currentUser._id) {
+				res.json({ error: 'This is not your expense!!!' });
+			} else {
+				res.json({ found: findExpense });
+			}
 		})
 		.catch(error => {
 			next(error);
@@ -31,8 +38,10 @@ router.get('/:id', (req, res, next) => {
 // create new expenses
 router.post('/', (req, res, next) => {
 	const { name, cost, description, categories } = req.body;
+	const { currentUser } = req.session;
+	const userId = currentUser._id;
 
-	Expenses.create({ name, cost, description, categories })
+	Expenses.create({ name, cost, description, categories, userId })
 		.then(newExpense => {
 			res.json({ created: newExpense });
 		})

@@ -28,13 +28,13 @@ router.put('/profile/:id', (req, res, next) => {
 
 // router.get('/mybooks', (req, res, next) => {
 //   const userId = req.session.currentUser._id;
-//   User.findById(userId)
-//     .populate('myBooks')
-//     .then(dbUser => {
-//       console.log(dbUser);
-//       res.json({ book: dbUser.myBooks });
-//     })
-//     .catch(error => next(error));
+  // User.findById(userId)
+  //   .populate('myBooks')
+  //   .then(dbUser => {
+  //     console.log(dbUser);
+  //     res.json({ book: dbUser.myBooks });
+  //   })
+  //   .catch(error => next(error));
 // });
 
 
