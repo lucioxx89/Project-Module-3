@@ -75,13 +75,17 @@ Expense model
 ```js
 
    {
+date: {
+      type: String,
+      required: true,
+    },
 
 name: {
     type:String,
     required: true,
     }
 
-cost: {
+amount: {
     type:Number,
     required: true,
     }

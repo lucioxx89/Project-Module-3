@@ -37,11 +37,11 @@ router.get('/:id', (req, res, next) => {
 
 // create new expenses
 router.post('/', (req, res, next) => {
-	const { name, cost, description, categories } = req.body;
+	const { date, name, amount, description, categories } = req.body;
 	const { currentUser } = req.session;
 	const userId = currentUser._id;
 
-	Expenses.create({ name, cost, description, categories, userId })
+	Expenses.create({ date, name, amount, description, categories, userId })
 		.then(newExpense => {
 			res.json({ created: newExpense });
 		})
@@ -52,10 +52,10 @@ router.post('/', (req, res, next) => {
 
 // edit an expense
 router.put('/:id', (req, res, next) => {
-	const { name, cost, description, categories } = req.body;
+	const { date, name, amount, description, categories } = req.body;
 	const { id } = req.params;
 
-	Expenses.findByIdAndUpdate(id, { name, cost, description, categories }, { new: true })
+	Expenses.findByIdAndUpdate(id, { date, name, amount, description, categories }, { new: true })
 		.then(updateExpense => {
 			res.json({ updated: updateExpense });
 		})

@@ -3,12 +3,17 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const expenseSchema = new Schema({
+	date: {
+		type: String,
+		required: true,
+	},
+
 	name: {
 		type: String,
 		required: true,
 	},
 
-	cost: {
+	amount: {
 		type: Number,
 		required: true,
 	},
