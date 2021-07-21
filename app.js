@@ -7,12 +7,11 @@ const MongoStore = require('connect-mongo');
 const cors = require('cors');
 const createError = require('http-errors');
 
-
 require('dotenv').config();
 
 const authRouter = require('./routes/auth');
 const demoRouter = require('./routes/demo');
-const expensesRouter = require('./routes/expenses');
+const transactionsRouter = require('./routes/transactions');
 const usersRouter = require('./routes/users');
 
 async function setupApp() {
@@ -46,7 +45,7 @@ async function setupApp() {
 
 	app.use('/', authRouter);
 	app.use('/protected', demoRouter);
-	app.use('/expenses', expensesRouter);
+	app.use('/transactions', transactionsRouter);
 	app.use('/users', usersRouter);
 
 	// catch 404 and forward to error handler

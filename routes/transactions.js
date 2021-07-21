@@ -1,33 +1,33 @@
 const express = require('express');
 
-const Expenses = require('../models/Expenses');
+const Transactions = require('../models/Transactions');
 
 const router = express.Router();
 
-// Find  all expenses
+// Find  all transactions
 router.get('/', (req, res, next) => {
 	const { currentUser } = req.session;
 
-	Expenses.find({ userId: currentUser._id })
-		.then(findExpenses => {
-			res.json({ found: findExpenses });
+	Transactions.find({ userId: currentUser._id })
+		.then(findTransactions => {
+			res.json({ found: findTransactions });
 		})
 		.catch(error => {
 			next(error);
 		});
 });
 
-// Find an expense by id
+// Find an transaction by id
 router.get('/:id', (req, res, next) => {
 	const { id } = req.params;
 	const { currentUser } = req.session;
 
-	Expenses.findById(id)
-		.then(findExpense => {
-			if (findExpense.userId !== currentUser._id) {
-				res.json({ error: 'This is not your expense!!!' });
+	Transactions.findById(id)
+		.then(findTransaction => {
+			if (findTransaction.userId !== currentUser._id) {
+				res.json({ error: 'This is not your transaction!!!' });
 			} else {
-				res.json({ found: findExpense });
+				res.json({ found: findTransaction });
 			}
 		})
 		.catch(error => {
@@ -35,29 +35,29 @@ router.get('/:id', (req, res, next) => {
 		});
 });
 
-// create new expenses
+// create new transactions
 router.post('/', (req, res, next) => {
 	const { date, name, amount, description, categories } = req.body;
 	const { currentUser } = req.session;
 	const userId = currentUser._id;
 
-	Expenses.create({ date, name, amount, description, categories, userId })
-		.then(newExpense => {
-			res.json({ created: newExpense });
+	Transactions.create({ date, name, amount, description, categories, userId })
+		.then(newTransaction => {
+			res.json({ created: newTransaction });
 		})
 		.catch(error => {
 			next(error);
 		});
 });
 
-// edit an expense
+// edit an transaction
 router.put('/:id', (req, res, next) => {
 	const { date, name, amount, description, categories } = req.body;
 	const { id } = req.params;
 
-	Expenses.findByIdAndUpdate(id, { date, name, amount, description, categories }, { new: true })
-		.then(updateExpense => {
-			res.json({ updated: updateExpense });
+	Transactions.findByIdAndUpdate(id, { date, name, amount, description, categories }, { new: true })
+		.then(updateTransaction => {
+			res.json({ updated: updateTransaction });
 		})
 		.catch(error => {
 			next(error);
@@ -67,9 +67,9 @@ router.put('/:id', (req, res, next) => {
 // Delete event
 router.delete('/:id', (req, res, next) => {
 	const { id } = req.params;
-	Expenses.findByIdAndDelete(id)
-		.then(deletedExpense => {
-			res.json({ deleted: deletedExpense });
+	Transactions.findByIdAndDelete(id)
+		.then(deletedTransaction => {
+			res.json({ deleted: deletedTransaction });
 		})
 		.catch(error => {
 			next(error);

@@ -32,24 +32,24 @@ The Budget Tracker app will help users tracking the day to day expenses and inco
 
 **Initial Balance** - User can check is current balance
 
-**Expense** - User can check the total expense ammount
+**Transaction** - User can check the total transaction ammount
 
 **Remaining Balance** - User can check the remaining balance
 
-**Expense list** - User can check the list of all expenses
+**Transaction list** - User can check the list of all transactions
 
-**Add Expense** - User can add an expense
+**Add Transaction** - User can add an transaction
 
-**Edit Expense** - User can edit a previously added expense
+**Edit Transaction** - User can edit a previously added transaction
 
-**Delete** - User can delete a previously added expense
+**Delete** - User can delete a previously added transaction
 
-**Categories Expenses** - Expenses will be group into categories
+**Categories Transactions** - Transactions will be group into categories
 
 
 ## BACKLOG
 
-**Search Bar** - Allow user to search for an expense by name.
+**Search Bar** - Allow user to search for an transaction by name.
 
 **Goals** - User can set up goals to achieve 
 
@@ -63,14 +63,14 @@ The Budget Tracker app will help users tracking the day to day expenses and inco
 | Sign up       | POST   | /signup  | Sign up a user with an account | { mail, username, password } |     |
 | Log in        | POST   | /login   | Log in the user                | { mail, password }           |     |
 | Logout        | GET    | /logout  | Logout a user                  |                              |     |
-| Expense form  |        |          | User can add an expense        |
-| Expnse List   |        |          | User can check all expenses    |
-| Edit Expense  |        |
-| Delete Expense|
+| Transaction form  |        |          | User can add an transaction        |
+| Expnse List   |        |          | User can check all transactions    |
+| Edit Transaction  |        |
+| Delete Transaction|
 
 ## MODELS
 
-Expense model
+Transaction model
 
 ```js
 
