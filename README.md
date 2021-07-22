@@ -80,7 +80,7 @@ date: {
       required: true,
     },
 
-name: {
+payee: {
     type:String,
     required: true,
     }
@@ -94,7 +94,7 @@ description: {
         type: String,
         required: true,
     }
-categories: {
+category: {
 	enum: [Home, Grocery, Health, Travel, Other]
    }
 ```

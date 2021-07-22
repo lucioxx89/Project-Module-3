@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 const transactionSchema = new Schema({
 	date: {
-		type: String,
+		type: Date,
 		required: true,
 	},
 
-	name: {
+	payee: {
 		type: String,
 		required: true,
 	},
@@ -23,7 +23,7 @@ const transactionSchema = new Schema({
 		required: true,
 	},
 
-	categories: {
+	category: {
 		type: String,
 		enum: ['Home', 'Grocery', 'Health', 'Travel', 'Other'],
 	},

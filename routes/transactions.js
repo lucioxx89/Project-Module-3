@@ -37,11 +37,11 @@ router.get('/:id', (req, res, next) => {
 
 // create new transactions
 router.post('/', (req, res, next) => {
-	const { date, name, amount, description, categories } = req.body;
+	const { date, payee, amount, description, category } = req.body;
 	const { currentUser } = req.session;
 	const userId = currentUser._id;
 
-	Transactions.create({ date, name, amount, description, categories, userId })
+	Transactions.create({ date, payee, amount, description, category, userId })
 		.then(newTransaction => {
 			res.json({ created: newTransaction });
 		})
@@ -52,10 +52,10 @@ router.post('/', (req, res, next) => {
 
 // edit an transaction
 router.put('/:id', (req, res, next) => {
-	const { date, name, amount, description, categories } = req.body;
+	const { date, payee, amount, description, category } = req.body;
 	const { id } = req.params;
 
-	Transactions.findByIdAndUpdate(id, { date, name, amount, description, categories }, { new: true })
+	Transactions.findByIdAndUpdate(id, { date, payee, amount, description, category }, { new: true })
 		.then(updateTransaction => {
 			res.json({ updated: updateTransaction });
 		})
