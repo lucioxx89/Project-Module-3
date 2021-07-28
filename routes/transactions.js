@@ -20,6 +20,7 @@ router.get('/', (req, res, next) => {
 // Find an transaction by id
 router.get('/:id', (req, res, next) => {
 	const { id } = req.params;
+
 	const { currentUser } = req.session;
 
 	Transactions.findById(id)
@@ -50,7 +51,7 @@ router.post('/', (req, res, next) => {
 		});
 });
 
-// edit an transaction
+// edit a transaction
 router.put('/:id', (req, res, next) => {
 	const { date, payee, amount, description, category } = req.body;
 	const { id } = req.params;
@@ -64,7 +65,7 @@ router.put('/:id', (req, res, next) => {
 		});
 });
 
-// Delete event
+// Delete transaction
 router.delete('/:id', (req, res, next) => {
 	const { id } = req.params;
 	Transactions.findByIdAndDelete(id)
