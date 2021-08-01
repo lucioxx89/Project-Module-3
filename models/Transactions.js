@@ -25,7 +25,7 @@ const transactionSchema = new Schema({
 
 	category: {
 		type: String,
-		enum: ['Home', 'Grocery', 'Health', 'Travel', 'Other'],
+		enum: ['Home', 'Restaurant', 'Health', 'Travel', 'Beauty', 'Supermarket', 'Other'],
 	},
 
 	userId: {
