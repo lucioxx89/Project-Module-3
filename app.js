@@ -57,6 +57,7 @@ async function setupApp() {
 	});
 
 	// eslint-disable-next-line no-unused-vars
+
 	app.use((error, req, res, next) => {
 		// eslint-disable-next-line no-console
 		const rawStatus = error.status ?? error.statusCode;
