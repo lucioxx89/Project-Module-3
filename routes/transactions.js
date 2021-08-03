@@ -26,7 +26,7 @@ router.get('/:id', (req, res, next) => {
 	Transactions.findById(id)
 
 		.then(findTransaction => {
-			if (findTransaction.userId !== currentUser._id) {
+			if (findTransaction.userId != currentUser._id) {
 				res.json({ error: 'This is not your transaction!!!' });
 			} else {
 				res.json({ found: findTransaction });
