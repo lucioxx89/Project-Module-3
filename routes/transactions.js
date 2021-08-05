@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 		});
 });
 
-// Find an transaction by id
+// Find a transaction by id
 router.get('/:id', (req, res, next) => {
 	const { id } = req.params;
 
@@ -37,7 +37,7 @@ router.get('/:id', (req, res, next) => {
 		});
 });
 
-// create new transactions
+// Create new transactions
 router.post('/', (req, res, next) => {
 	const { date, payee, amount, description, category } = req.body;
 	const { currentUser } = req.session;
@@ -52,7 +52,7 @@ router.post('/', (req, res, next) => {
 		});
 });
 
-// edit a transaction
+// Edit a transaction
 router.put('/:id', (req, res, next) => {
 	const { date, payee, amount, description, category } = req.body;
 	const { id } = req.params;
